@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    android:padding="@dimen/activity_horizontal_margin"
+    >
+
+    <com.charming.ledtextview.LedTextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/led_horizontal_spacing"
+        android:gravity="center"
+        android:shadowColor="@android:color/holo_orange_dark"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="10"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="80sp"/>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/main_btn"
+        android:elevation="@dimen/btn_elevation"
+        android:text="@string/btn_start"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/btn_text"
+        android:textStyle="normal"/>
+
+    <LinearLayout
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/grp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_count"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_pause"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/grp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:elevation="@dimen/btn_elevation"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_reset"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+        <Button
+            android:id="@+id/btn_resume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_resume"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+    </LinearLayout>
+</RelativeLayout>

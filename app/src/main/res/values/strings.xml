@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">1cm秒表</string>
+    <string name="btn_text_count">计次</string>
+    <string name="btn_text_pause">暂停</string>
+    <string name="btn_text_reset">重置</string>
+    <string name="btn_text_resume">继续</string>
+    <string name="btn_start">开始</string>
+    <string name="time_init">00:00.0</string>
+    <string name="time_format">mm:ss.</string>
+</resources>

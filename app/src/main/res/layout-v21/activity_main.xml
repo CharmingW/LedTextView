@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    android:padding="@dimen/activity_horizontal_margin"
+    >
+
+    <RelativeLayout
+        android:id="@+id/time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/led_vertical_spacing">
+
+        <com.charming.ledtextview.LedTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:shadowColor="@android:color/holo_orange_dark"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="80sp"/>
+    </RelativeLayout>
+
+    <ListView
+        android:divider="@drawable/time_list_divider"
+        android:id="@+id/time_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_layout"
+        android:layout_marginTop="@dimen/led_vertical_spacing"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_start"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"
+            android:textStyle="normal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_count"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_pause"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_reset"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+        <Button
+            android:id="@+id/btn_resume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn"
+            android:elevation="@dimen/btn_elevation"
+            android:text="@string/btn_text_resume"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/btn_text"/>
+
+    </LinearLayout>
+</RelativeLayout>
