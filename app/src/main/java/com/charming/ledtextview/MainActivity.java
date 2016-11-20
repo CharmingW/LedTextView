@@ -1,10 +1,14 @@
 package com.charming.ledtextview;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,8 +25,13 @@ public class MainActivity extends Activity {
     private long mDuration;
     private boolean isStart = false;
     private List<String> mTimeData = new ArrayList();
+    private TimeListAdapter mAdapter;
     private TextView mLedText;
     private ListView mTimeList;
+    private Animator mBtnAppearing;
+    private Animator mLedDisappearing;
+    private Animation mAnimation;
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -52,11 +61,21 @@ public class MainActivity extends Activity {
     }
 
     private void init() {
+        mBtnAppearing = AnimatorInflater.loadAnimator(this, R.animator.btn_appear);
+        mLedDisappearing = AnimatorInflater.loadAnimator(this, R.animator.led_item_disappear);
+        mLedDisappearing.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mTimeData.remove(0);
+                mTimeData.add(mLedText.getText().toString());
+                mAdapter.notifyDataSetChanged();
+            }
+        });
         mLedText = (TextView) findViewById(R.id.time);
         mLedText.setText(getString(R.string.time_init));
         mTimeList = (ListView) findViewById(R.id.time_list);
-        final TimeListAdapter adapter = new TimeListAdapter(this, mTimeData);
-        mTimeList.setAdapter(adapter);
+        mAdapter = new TimeListAdapter(this, mTimeData);
+        mTimeList.setAdapter(mAdapter);
         final View grp1 = findViewById(R.id.grp1);
         final View grp2 = findViewById(R.id.grp2);
         final Button start = (Button) findViewById(R.id.btn_start);
@@ -65,6 +84,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 start.setVisibility(View.GONE);
                 grp1.setVisibility(View.VISIBLE);
+                mBtnAppearing.setTarget(grp1);
+                mBtnAppearing.start();
                 isStart = true;
                 mHandler.sendEmptyMessage(1);
             }
@@ -74,11 +95,13 @@ public class MainActivity extends Activity {
         count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mTimeData.size() > 8) {
-                    mTimeData.remove(0);
+                if (mTimeData.size() > 7) {
+                    mLedDisappearing.setTarget(mTimeList.getChildAt(0));
+                    mLedDisappearing.start();
+                    return;
                 }
                 mTimeData.add(mLedText.getText().toString());
-                adapter.notifyDataSetChanged();
+                mAdapter.notifyDataSetChanged();
             }
         });
 
@@ -88,6 +111,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 grp1.setVisibility(View.GONE);
                 grp2.setVisibility(View.VISIBLE);
+                mBtnAppearing.setTarget(grp2);
+                mBtnAppearing.start();
                 isStart = false;
                 mHandler.sendEmptyMessage(1);
             }
@@ -99,10 +124,12 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 grp2.setVisibility(View.GONE);
                 start.setVisibility(View.VISIBLE);
+                mBtnAppearing.setTarget(start);
+                mBtnAppearing.start();
                 isStart = false;
                 mDuration = 0;
                 mTimeData.clear();
-                adapter.notifyDataSetChanged();
+                mAdapter.notifyDataSetChanged();
                 mLedText.setText(getString(R.string.time_init));
             }
         });
@@ -113,14 +140,12 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 grp2.setVisibility(View.GONE);
                 grp1.setVisibility(View.VISIBLE);
+                mBtnAppearing.setTarget(grp1);
+                mBtnAppearing.start();
                 isStart = true;
                 mHandler.sendEmptyMessage(1);
             }
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 }

@@ -8,7 +8,7 @@
         android:id="@+id/recorded_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:paddingStart="@dimen/led_item_horizontal_spacing"
         android:shadowColor="@android:color/holo_orange_dark"
         android:shadowDx="5"
         android:shadowDy="5"

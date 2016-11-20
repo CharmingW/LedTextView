@@ -18,8 +18,7 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/led_horizontal_spacing"
             android:shadowColor="@android:color/holo_orange_dark"
             android:shadowDx="5"
             android:shadowDy="5"
@@ -29,12 +28,12 @@
     </RelativeLayout>
 
     <ListView
-        android:divider="@drawable/time_list_divider"
+        android:layout_marginTop="@dimen/led_vertical_spacing"
         android:id="@+id/time_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/time_layout"
-        android:layout_marginTop="@dimen/led_vertical_spacing"
+        android:divider="@drawable/time_list_divider"
         />
 
     <LinearLayout
@@ -119,6 +118,5 @@
             android:text="@string/btn_text_resume"
             android:textColor="@android:color/black"
             android:textSize="@dimen/btn_text"/>
-
     </LinearLayout>
 </RelativeLayout>
